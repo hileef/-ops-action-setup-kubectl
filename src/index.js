@@ -10,17 +10,17 @@ function download(url, dest) {
     return new Promise((resolve, reject) => {
         const file = fs.createWriteStream(dest, { flags: "wx" });
 
-        const request = request.get(url, response => {
-            if (response.statusCode === 200) {
-                response.pipe(file);
+        const req = request.get(url, resp => {
+            if (resp.statusCode === 200) {
+                resp.pipe(file);
             } else {
                 file.close();
                 fs.unlink(dest, () => {}); // Delete temp file
-                reject(`Server responded with ${response.statusCode}: ${response.statusMessage}`);
+                reject(`Server responded with ${resp.statusCode}: ${resp.statusMessage}`);
             }
         });
 
-        request.on("error", err => {
+        req.on("error", err => {
             file.close();
             fs.unlink(dest, () => {}); // Delete temp file
             reject(err.message);
