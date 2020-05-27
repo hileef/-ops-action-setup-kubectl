@@ -1,0 +1,10 @@
+name: 'Setup Kubectl'
+description: 'Installs the Kubectl binary'
+inputs:
+  version:
+    description: 'kubectl version to install'
+    required: true
+    default: 'v1.15.3'
+runs:
+  using: 'node12'
+  main: 'index.js'

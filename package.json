@@ -1,0 +1,12 @@
+{
+  "name": "ops-action-setup-kubectl",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/hileef/ops-action-setup-kubectl.git",
+  "author": "Eliot Hautefeuille <ehautefeuille@scortex.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^2.2.0"
+  }
+}
