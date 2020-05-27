@@ -298,6 +298,7 @@ module.exports = require("path");
 const http = __webpack_require__(605);
 const fs = __webpack_require__(747);
 const util = __webpack_require__(669);
+const request = __webpack_require__(619);
 
 const core = __webpack_require__(179);
 // const github = require('@actions/github');
@@ -306,7 +307,7 @@ function download(url, dest) {
     return new Promise((resolve, reject) => {
         const file = fs.createWriteStream(dest, { flags: "wx" });
 
-        const request = http.get(url, response => {
+        const request = request.get(url, response => {
             if (response.statusCode === 200) {
                 response.pipe(file);
             } else {
@@ -365,6 +366,14 @@ try {
 /***/ (function(module) {
 
 module.exports = require("http");
+
+/***/ }),
+
+/***/ 619:
+/***/ (function(module) {
+
+module.exports = eval("require")("request");
+
 
 /***/ }),
 

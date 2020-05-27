@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const util = require("util");
+const request = require('request');
 
 const core = require('@actions/core');
 // const github = require('@actions/github');
@@ -9,7 +10,7 @@ function download(url, dest) {
     return new Promise((resolve, reject) => {
         const file = fs.createWriteStream(dest, { flags: "wx" });
 
-        const request = http.get(url, response => {
+        const request = request.get(url, response => {
             if (response.statusCode === 200) {
                 response.pipe(file);
             } else {
